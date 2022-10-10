@@ -36,8 +36,6 @@ jobs:
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        # with:
-        #   images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         with:
           images: ${{ matrix.image }}
 
@@ -46,7 +44,6 @@ jobs:
         with:
           context: ${{ matrix.path }}
           push: true
-          #tags: ${{ steps.meta.outputs.tags }}
           tags: ["latest", ${{ matrix.version }}]
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/Dockerfile
