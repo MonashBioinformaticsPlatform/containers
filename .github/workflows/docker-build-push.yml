@@ -44,6 +44,6 @@ jobs:
         with:
           context: ${{ matrix.path }}
           push: true
-          tags: ["latest", ${{ matrix.version }}]
+          tags: ${{ matrix.version }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/Dockerfile
