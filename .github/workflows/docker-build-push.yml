@@ -42,8 +42,10 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ${{ matrix.path }}/${{ matrix.version }}
           push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          context: ${{ matrix.path }}/${{ matrix.version }}
           tags: ${{ matrix.image }}:${{ matrix.version }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/${{ matrix.version }}/Dockerfile
