@@ -44,6 +44,6 @@ jobs:
         with:
           context: ${{ matrix.path }}/${{ matrix.version }}
           push: true
-          tags: ${{ matrix.version }}
+          tags: ${{ matrix.image }}:${{ matrix.version }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/${{ matrix.version }}/Dockerfile
