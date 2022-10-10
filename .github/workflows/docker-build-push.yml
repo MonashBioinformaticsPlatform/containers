@@ -39,13 +39,14 @@ jobs:
         # with:
         #   images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         with:
-          images: ${{ matrix.image }}:${{ matrix.version }}
+          images: ${{ matrix.image }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ${{ matrix.path }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          #tags: ${{ steps.meta.outputs.tags }}
+          tags: ["latest", ${{ matrix.version }}]
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/Dockerfile
