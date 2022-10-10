@@ -1,6 +1,7 @@
 # docker build -t guppy-gpu:6.3.8 .
 # singularity build guppy-gpu_6.3.8.sif docker-daemon://guppy-gpu:6.3.8
 
+
 FROM nvidia/cuda:11.8.0-base-ubuntu20.04
 
 # MAINTAINER Laurent Jourdren <jourdren@biologie.ens.fr>

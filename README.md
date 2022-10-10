@@ -2,9 +2,9 @@
 
 This is a repository for Dockerfiles and container images (mostly) packaging individual tools.
 
-> Your first port of call should usually by BioContainers (eg via the little 'containers|none' badge on [a Bioconda package](https://bioconda.github.io/recipes/samtools)). But sometimes we need our own custom containers.
+> Your first port of call should usually by BioContainers (eg via the little 'containers|none' badge on [a Bioconda package](https://bioconda.github.io/recipes/samtools)). There is a convenience script here `get_biocontainer.sh` that will grab the latest Singularity image for a Bioconda package. But sometimes we need our own custom containers.
 
-## Quickstart
+## Quickstart - using an image
 
 Find the image and version you want under [Packages](https://github.com/orgs/MonashBioinformaticsPlatform/packages?repo_name=containers).
 
@@ -22,7 +22,7 @@ This will generate a `*.sif` file (eg `guppy-gpu_6.3.8.sif`). You can run the to
 singularity exec guppy-gpu_6.3.8.sif gupper_basecaller --help
 ```
 
-## Adding new Dockerfiles
+## Adding new Dockerfiles, building images
 
 Create a Dockerfile at `dockerfiles/${tool}/${version}/Dockerfile`.
 (where `${tool}` and version might be `guppy-gpu` and `6.3.8`)
