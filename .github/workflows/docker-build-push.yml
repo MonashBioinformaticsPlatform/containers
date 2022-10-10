@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - path: ./dockerfiles/guppy-gpu
-            image: ghcr.io/monashbioinformaticsplatform/guppy-gpu
+            image: ghcr.io/monashbioinformaticsplatform/containers/guppy-gpu
             version: 6.3.8
 
     steps:
