@@ -10,10 +10,13 @@ RUN apt-get update && \
       libboost-all-dev \
       file \
       numactl \
-      gawk && \
+      gawk \
+      locales && \
     apt-get autoremove && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    sed -i '/C.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen
 
 #ADD --checksum=sha256:15078e24c79fe5aabe42748d64f95d15f3fbd7708e84d88fc07c4b7f2e4b0902 https://github.com/alekseyzimin/masurca/releases/download/v4.1.0/MaSuRCA-4.1.0.tar.gz /tmp/masurca.tar.gz
 ADD https://github.com/alekseyzimin/masurca/releases/download/v4.1.0/MaSuRCA-4.1.0.tar.gz /opt/MaSuRCA-4.1.0.tar.gz

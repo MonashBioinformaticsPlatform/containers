@@ -25,7 +25,7 @@ jobs:
           - path: ./dockerfiles/masurca
             image: ghcr.io/monashbioinformaticsplatform/containers/masurca
             version: 4.1.0
-            rebuild: false
+            rebuild: true
 
     steps:
       - name: Checkout repository
