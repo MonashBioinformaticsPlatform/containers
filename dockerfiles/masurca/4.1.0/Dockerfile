@@ -11,6 +11,7 @@ RUN apt-get update && \
       file \
       numactl \
       gawk \
+      python2 \
       locales && \
     apt-get autoremove && \
     apt-get clean && \
