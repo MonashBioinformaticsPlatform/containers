@@ -21,9 +21,11 @@ jobs:
           - path: ./dockerfiles/guppy-gpu
             image: ghcr.io/monashbioinformaticsplatform/containers/guppy-gpu
             version: 6.3.8
+            rebuild: false
           - path: ./dockerfiles/masurca
             image: ghcr.io/monashbioinformaticsplatform/containers/masurca
             version: 4.1.0
+            rebuild: false
 
     steps:
       - name: Checkout repository
@@ -50,6 +52,7 @@ jobs:
       - name: Build and push Docker image
         #uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         uses: docker/build-push-action@v3
+        if: ${{ matrix.rebuild }}
         with:
           push: true
           cache-from: type=gha
