@@ -21,11 +21,11 @@ jobs:
           - path: ./dockerfiles/guppy-gpu
             image: ghcr.io/monashbioinformaticsplatform/containers/guppy-gpu
             version: 6.3.8
-            rebuild: false
+            enabled: false
           - path: ./dockerfiles/masurca
             image: ghcr.io/monashbioinformaticsplatform/containers/masurca
             version: 4.1.0
-            rebuild: true
+            enabled: true
 
     steps:
       - name: Checkout repository
@@ -49,15 +49,23 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/monashbioinformaticsplatform/containers
 
+      - name: Get current date
+        id: datestamp
+        run: |
+          echo "{datestamp}={$(date '+%F.%H%M%S')}" >>$GITHUB_STATE
+
       - name: Build and push Docker image
         #uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         uses: docker/build-push-action@v3
-        if: ${{ matrix.rebuild }}
+        if: ${{ matrix.enabled }}
         with:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
           context: ${{ matrix.path }}/${{ matrix.version }}
-          tags: ${{ matrix.image }}:${{ matrix.version }}
+          tags: |
+            ${{ matrix.image }}:${{ matrix.version }}
+            ${{ matrix.image }}:${{ matrix.version }}-${{ github.run_number }}
+            ${{ matrix.image }}:${{ matrix.version }}-${{ env.datestamp }}
           labels: ${{ steps.meta.outputs.labels }}
           file: ${{ matrix.path }}/${{ matrix.version }}/Dockerfile
