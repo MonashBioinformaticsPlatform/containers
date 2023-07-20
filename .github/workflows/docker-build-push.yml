@@ -21,10 +21,14 @@ jobs:
           - path: ./dockerfiles/guppy-gpu
             image: ghcr.io/monashbioinformaticsplatform/containers/guppy-gpu
             version: 6.3.8
-            enabled: true
+            enabled: false
           - path: ./dockerfiles/masurca
             image: ghcr.io/monashbioinformaticsplatform/containers/masurca
             version: 4.1.0
+            enabled: false
+          - path: ./dockerfiles/superfreq
+            image: ghcr.io/monashbioinformaticsplatform/containers/superfreq
+            version: 1.4.5
             enabled: true
 
     steps:
