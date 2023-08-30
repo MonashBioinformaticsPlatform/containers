@@ -8,7 +8,7 @@ RUN  apt-get update && \
             libxml2-dev openjdk-8-jdk python3-dev python3-pip libfftw3-dev libgsl-dev \
             llvm \
             libglpk40 libglpk-dev libigraph-dev libigraph2 libfontconfig1-dev libcairo2-dev \
-            libudunits2-dev libgdal-dev libgeos-dev libproj-dev libsqlite0-dev libproj-dev && \
+            libudunits2-dev libgdal-dev libgeos-dev libproj-dev libsqlite0-dev libproj-dev \
             samtools varscan && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
