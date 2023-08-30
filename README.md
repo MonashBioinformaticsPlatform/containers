@@ -2,7 +2,7 @@
 
 This is a repository for Dockerfiles and container images (mostly) packaging individual tools.
 
-> Your first port of call should usually by BioContainers (eg via the little 'containers|none' badge on [a Bioconda package](https://bioconda.github.io/recipes/samtools)). There is a convenience script here `get_biocontainer.sh` that will grab the latest Singularity image for a Bioconda package. But sometimes we need our own custom containers.
+> Your first port of call should usually be the [Galaxy Container Depot](https://depot.galaxyproject.org/singularity/) or BioContainers (eg via the little 'containers|none' badge on [a Bioconda package](https://bioconda.github.io/recipes/samtools)). There is a convenience script here `get_biocontainer.sh` that will grab the latest Singularity image for a Bioconda package. But sometimes we need our own custom containers.
 
 ## Quickstart - using an image
 
