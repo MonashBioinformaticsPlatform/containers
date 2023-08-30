@@ -1,6 +1,7 @@
 FROM ghcr.io/rocker-org/r-ver:4.3.1
 
-RUN  apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt \
+     apt-get update && \
      apt-get install --yes \
             build-essential git pkg-config wget git curl htop \
             libhdf5-dev libssl-dev libpng-dev libboost-all-dev \
@@ -9,6 +10,7 @@ RUN  apt-get update && \
             llvm \
             libglpk40 libglpk-dev libigraph-dev libigraph2 libfontconfig1-dev libcairo2-dev \
             libudunits2-dev libgdal-dev libgeos-dev libproj-dev libsqlite0-dev libproj-dev && \
+            samtools varscan && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
