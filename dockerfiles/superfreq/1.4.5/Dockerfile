@@ -1,7 +1,6 @@
 FROM ghcr.io/rocker-org/r-ver:4.3.1
 
-RUN --mount=type=cache,target=/var/cache/apt \
-     apt-get update && \
+RUN  apt-get update && \
      apt-get install --yes \
             build-essential git pkg-config wget git curl htop \
             libhdf5-dev libssl-dev libpng-dev libboost-all-dev \
