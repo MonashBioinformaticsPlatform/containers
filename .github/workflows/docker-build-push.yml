@@ -21,19 +21,19 @@ jobs:
           - path: ./dockerfiles/guppy-gpu
             image: ghcr.io/monashbioinformaticsplatform/containers/guppy-gpu
             version: 6.3.8
-            enabled: false
+            force: false
           - path: ./dockerfiles/masurca
             image: ghcr.io/monashbioinformaticsplatform/containers/masurca
             version: 4.1.0
-            enabled: false
+            force: false
           - path: ./dockerfiles/superfreq
             image: ghcr.io/monashbioinformaticsplatform/containers/superfreq
             version: 1.4.5
-            enabled: false
+            force: false
           - path: ./dockerfiles/fromassembly2feature
             image: ghcr.io/monashbioinformaticsplatform/containers/fromassembly2feature
             version: 2.22-a1805f6
-            enabled: true
+            force: false
 
     steps:
       - name: Checkout repository
@@ -62,10 +62,20 @@ jobs:
         run: |
           echo "datestamp=$(date '+%F.%H%M%S')" >>$GITHUB_ENV
 
+      - name: Check if image exists in registry
+        id: check_image
+        run: |
+          IMAGE_TAG="${{ matrix.image }}:${{ matrix.version }}"
+          if docker manifest inspect ${IMAGE_TAG} > /dev/null 2>&1; then
+            echo "::set-output name=image_exists::true"
+          else
+            echo "::set-output name=image_exists::false"
+          fi
+
       - name: Build and push Docker image
         #uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         uses: docker/build-push-action@v3
-        if: ${{ matrix.enabled }}
+        if: ${{ steps.check_image.outputs.image_exists == 'false' || matrix.force }}
         with:
           push: true
           cache-from: type=gha
