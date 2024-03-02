@@ -29,6 +29,10 @@ jobs:
           - path: ./dockerfiles/superfreq
             image: ghcr.io/monashbioinformaticsplatform/containers/superfreq
             version: 1.4.5
+            enabled: false
+          - path: ./dockerfiles/fromassembly2feature
+            image: ghcr.io/monashbioinformaticsplatform/containers/fromassembly2feature
+            version: 2.22-a1805f6
             enabled: true
 
     steps:
