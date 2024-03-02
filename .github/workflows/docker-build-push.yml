@@ -67,15 +67,15 @@ jobs:
         run: |
           IMAGE_TAG="${{ matrix.image }}:${{ matrix.version }}"
           if docker manifest inspect ${IMAGE_TAG} > /dev/null 2>&1; then
-            echo "::set-output name=image_exists::true"
+             echo "VERSION_EXISTS=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=image_exists::false"
+             echo "VERSION_EXISTS=false" >> $GITHUB_ENV
           fi
 
       - name: Build and push Docker image
         #uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         uses: docker/build-push-action@v3
-        if: ${{ steps.check_image.outputs.image_exists == 'false' || matrix.force }}
+        if: ${{ env.VERSION_EXISTS == 'false' || matrix.force }}
         with:
           push: true
           cache-from: type=gha
