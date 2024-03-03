@@ -24,13 +24,21 @@ singularity exec guppy-gpu_6.3.8.sif gupper_basecaller --help
 
 ## Adding new Dockerfiles, building images
 
+Create a new branch:
+```bash
+git branch myNewContainer
+git checkout myNewContainer
+```
+
 Create a Dockerfile at `dockerfiles/${tool}/${version}/Dockerfile`.
 (where `${tool}` and version might be `guppy-gpu` and `6.3.8`)
 
 Ideally also add a `dockerfiles/${tool}/${version}/README.md`
 
-Test your `docker build` locally.
+Test your `docker build -t myNewContainer:1.0 .` locally.
 
 Edit the `matrix:` section at the top of `.github/workflows/docker-build-push.yml` to add the details for your new tool (follow the established pattern).
 
-Commit and push to the `main` branch and check [Actions](https://github.com/MonashBioinformaticsPlatform/containers/actions) to see if the image build was successful.
+Commit and push your branch, then check [Actions](https://github.com/MonashBioinformaticsPlatform/containers/actions) to see if the image build was successful (all branches automatically build).
+
+If your build is successful, PR / squash and merge into the `main` branch (we prefer squashing before merging into the `main` branch to keep the main commit history cleaner).
