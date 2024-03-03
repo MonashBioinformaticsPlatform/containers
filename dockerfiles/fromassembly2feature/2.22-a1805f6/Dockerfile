@@ -14,7 +14,7 @@ RUN micromamba install -y -n base \
     conda-forge::r-seqinr=4.2_5 \
     conda-forge::r-reshape2=1.4.4 \
     conda-forge::r-rmarkdown=2.8 \
-    conda-forge::pandoc=3.1.1 && \
+    conda-forge::pandoc=2.19.2 && \
     micromamba clean --all --yes
 
 USER root
