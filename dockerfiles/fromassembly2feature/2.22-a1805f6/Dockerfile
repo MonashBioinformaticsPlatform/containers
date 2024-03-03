@@ -4,17 +4,17 @@ ENV GIT_REF=a1805f682c9ac28c3ec22dc067d3576e64764fb3
 
 # TODO: Pin versions
 RUN micromamba install -y -n base \
-    bioconda::prodigal \
-    bioconda::samtools \
-    bioconda::blast \
-    bioconda::plasclass \
-    r::r-essentials \
-    bioconda::bioconductor-msa \
-    bioconda::bioconductor-biostrings \
-    conda-forge::r-seqinr \
-    conda-forge::r-reshape2 \
-    conda-forge::r-rmarkdown \
-    conda-forge::pandoc && \
+    bioconda::prodigal=2.6.3 \
+    bioconda::samtools=1.12 \
+    bioconda::blast=2.15.0 \
+    bioconda::plasclass=0.1.1 \
+    r::r-essentials=3.6.0 \
+    bioconda::bioconductor-msa=1.18.0 \
+    bioconda::bioconductor-biostrings=2.54.0 \
+    conda-forge::r-seqinr=4.2_5 \
+    conda-forge::r-reshape2=1.4.4 \
+    conda-forge::r-rmarkdown=2.8 \
+    conda-forge::pandoc=3.1.1 && \
     micromamba clean --all --yes
 
 USER root
