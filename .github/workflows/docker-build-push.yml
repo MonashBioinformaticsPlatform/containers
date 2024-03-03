@@ -33,7 +33,7 @@ jobs:
           - path: ./dockerfiles/fromassembly2feature
             image: ghcr.io/monashbioinformaticsplatform/containers/fromassembly2feature
             version: 2.22-a1805f6
-            force: false
+            force: true
 
     steps:
       - name: Checkout repository
