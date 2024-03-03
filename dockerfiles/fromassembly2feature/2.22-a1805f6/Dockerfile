@@ -2,7 +2,6 @@ FROM mambaorg/micromamba:1.5.6
 
 ENV GIT_REF=a1805f682c9ac28c3ec22dc067d3576e64764fb3
 
-# TODO: Pin versions
 RUN micromamba install -y -n base \
     bioconda::prodigal=2.6.3 \
     bioconda::samtools=1.12 \
