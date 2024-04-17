@@ -28,4 +28,6 @@ RUN git clone https://github.com/LPerlaza/fromAssembly2Feature.git /opt/fromAsse
 
 USER $MAMBA_USER
 
+ENV PATH="/opt/conda/bin:${PATH}"
+
 CMD ["fromAssembly2gene.pl"]
