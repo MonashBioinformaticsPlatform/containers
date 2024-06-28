@@ -30,7 +30,7 @@ jobs:
             force: false
           - path: ./dockerfiles/superfreq
             image: ghcr.io/monashbioinformaticsplatform/containers/superfreq
-            version: 1.4.5
+            version: 1.5.1
             force: false
           - path: ./dockerfiles/fromassembly2feature
             image: ghcr.io/monashbioinformaticsplatform/containers/fromassembly2feature
