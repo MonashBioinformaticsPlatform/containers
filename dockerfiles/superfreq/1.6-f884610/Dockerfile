@@ -1,4 +1,4 @@
-1.FROM ghcr.io/rocker-org/r-ver:4.4.1
+FROM ghcr.io/rocker-org/r-ver:4.4.1
 
 RUN  apt-get update && \
      apt-get install --yes \
